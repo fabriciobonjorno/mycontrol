@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Callbacks
   before_save :capitalize_names
@@ -6,7 +8,7 @@ class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :trackable
-         
+
   # Validates
   validates :first_name, :last_name, presence: true, uniqueness: { case_sensitive: false }
   validate :password_regex

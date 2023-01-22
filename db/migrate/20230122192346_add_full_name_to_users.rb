@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFullNameToUsers < ActiveRecord::Migration[6.1]
   if table_exists? 'users'
     def change
