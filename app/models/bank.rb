@@ -6,4 +6,5 @@ class Bank < ApplicationRecord
 
   # Relationship
   has_many :accounts, dependent: :destroy
+  has_many :integration_client_reporters, as: :reportable
 end

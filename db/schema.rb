@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_230_122_224_523) do
+ActiveRecord::Schema.define(version: 20_230_122_232_847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -84,6 +84,20 @@ ActiveRecord::Schema.define(version: 20_230_122_224_523) do
     t.index ['payment_date'], name: 'index_installments_on_payment_date'
     t.index ['payment_value'], name: 'index_installments_on_payment_value'
     t.index ['status'], name: 'index_installments_on_status'
+  end
+
+  create_table 'integration_client_reporters', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.text 'message'
+    t.boolean 'success'
+    t.string 'reportable_type', null: false
+    t.uuid 'reportable_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['message'], name: 'index_integration_client_reporters_on_message'
+    t.index ['reportable_id'], name: 'index_integration_client_reporters_on_reportable_id'
+    t.index %w[reportable_type reportable_id], name: 'index_integration_client_reporters_on_reportable'
+    t.index ['reportable_type'], name: 'index_integration_client_reporters_on_reportable_type'
+    t.index ['success'], name: 'index_integration_client_reporters_on_success'
   end
 
   create_table 'users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
