@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_230_122_204_959) do
+ActiveRecord::Schema.define(version: 20_230_122_211_218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
+
+  create_table 'accounts', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'agency'
+    t.string 'account'
+    t.decimal 'balance', precision: 10, scale: 2
+    t.integer 'account_type', default: 0
+    t.integer 'status', default: 0
+    t.uuid 'bank_id', null: false
+    t.uuid 'group_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['bank_id'], name: 'index_accounts_on_bank_id'
+    t.index ['group_id'], name: 'index_accounts_on_group_id'
+  end
 
   create_table 'banks', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.string 'name'
@@ -59,5 +71,7 @@ ActiveRecord::Schema.define(version: 20_230_122_204_959) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
+  add_foreign_key 'accounts', 'banks'
+  add_foreign_key 'accounts', 'groups'
   add_foreign_key 'groups', 'users'
 end

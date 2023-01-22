@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   # Relationship
   has_many :groups, dependent: :destroy
+  has_many :accounts, through: :groups
 
   # Capitalize Name
   def capitalize_names

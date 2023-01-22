@@ -10,4 +10,5 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_uniqueness_of(:first_name).case_insensitive }
   it { is_expected.to validate_uniqueness_of(:last_name).case_insensitive }
   it { is_expected.to have_many(:groups).dependent(:destroy) }
+  it { is_expected.to have_many(:accounts).through(:groups) }
 end

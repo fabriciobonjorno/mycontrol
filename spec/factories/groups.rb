@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :group do
-    name { 'MyString' }
-    status { 1 }
-    user { nil }
+    sequence(:name) { |n| "Group #{n}" }
+    status { [0, 1].sample }
+    user
   end
 end
