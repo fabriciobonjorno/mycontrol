@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBanks < ActiveRecord::Migration[6.1]
   def change
     return if table_exists? 'banks'

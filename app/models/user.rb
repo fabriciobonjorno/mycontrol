@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, uniqueness: { case_sensitive: false }
   validate :password_regex
 
+  # Relationship
+  has_many :groups, dependent: :destroy
+
   # Capitalize Name
   def capitalize_names
     self.first_name = first_name&.split(/ |_/)&.map(&:capitalize)&.join(' ') unless first_name.blank?
