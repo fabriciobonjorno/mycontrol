@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :financial do
     transaction_type { [0, 1].sample }

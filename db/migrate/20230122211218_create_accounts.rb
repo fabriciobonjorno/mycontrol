@@ -13,5 +13,10 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :accounts, :agency
+    add_index :accounts, :account
+    add_index :accounts, :status
+    add_index :accounts, :account_type
+    add_index :accounts, :balance
   end
 end
