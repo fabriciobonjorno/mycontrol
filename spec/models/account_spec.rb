@@ -13,4 +13,5 @@ RSpec.describe Account, type: :model do
   it { is_expected.to belong_to :bank }
   it { is_expected.to belong_to :group }
   it { is_expected.to have_one(:user).through(:group) }
+  it { is_expected.to have_many(:financials).dependent(:destroy) }
 end

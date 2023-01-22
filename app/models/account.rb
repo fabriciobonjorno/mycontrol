@@ -5,7 +5,10 @@ class Account < ApplicationRecord
   # enums
   enum account_type: %i[checking saving]
   enum status: %i[active inactive]
+
+  # Relationships
   belongs_to :bank
   belongs_to :group
   has_one :user, through: :group
+  has_many :financials, dependent: :destroy
 end
