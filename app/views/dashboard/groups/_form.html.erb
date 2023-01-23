@@ -1,0 +1,27 @@
+<%= form_with model: [:dashboard, @group] do |f| %>
+  <div class="p-4">
+    <div class="form-row justify-content-lg-center">
+      <div class="form-group col-md-12 col-lg-12">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", required: true %>
+      </div>
+      <div class="form-group col-md-12 col-lg-12 mt-3 text-center">
+        <div class="status-label"><%= f.label :status, class: "form-check-label" %></div>
+        <div class="status-label">
+          <%=  f.collection_radio_buttons :status, Group.statuses.map{ |a| [a.first,a.first] }, :first, :second  do |b| %>
+            <div class="form-check form-check-inline">
+              <%= b.radio_button class: "form-check-input" %>
+              <%= b.label class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-10 offset-lg-1">
+    <div class="px-4 mb-4 text-center">
+      <%= f.submit class: 'btn app-btn-primary theme-btn my-1', data: { disable_with: 'Saving....⌛'} %>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><%= t ("buttons_default.cancel") %></button>
+    </div>
+  </div>
+<% end %>
