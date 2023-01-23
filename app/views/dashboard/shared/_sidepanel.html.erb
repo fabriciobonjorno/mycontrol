@@ -28,6 +28,15 @@
         <% end %><!--//nav-link-->
       </li>
       <!--//nav-item-->
+            <li class="nav-item">
+        <%= link_to dashboard_accounts_path, class: "nav-link" do %>
+          <span class="nav-icon">
+            <%= icon("bank", width: "1em", height: "1em", viewBox: "0 0 16 16") %>
+          </span>
+          <span class="nav-link-text"><%= t ("account.account") %></span>
+        <% end %><!--//nav-link-->
+      </li>
+      <!--//nav-item-->
     </ul>
     <!--//app-menu-->
   </nav><!--//app-nav-->

@@ -49,8 +49,17 @@ en:
     cancel: Cancel
   group:
     group: Group
-    title_group: Account Group
+    title_group: Account Groups
     name: Name Group
     status: Status
     action: Action
     id: Number Group
+  account:
+    account: Account
+    agency: Agency
+    balance: Balance
+    account_type: Account Type
+    title_account: Accounts
+    status: Status
+    action: Action
+    id: Number Account

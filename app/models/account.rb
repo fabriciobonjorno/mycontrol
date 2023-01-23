@@ -11,4 +11,8 @@ class Account < ApplicationRecord
   belongs_to :group
   has_one :user, through: :group
   has_many :financials, dependent: :destroy
+
+  def active?
+    status == 'active'
+  end
 end

@@ -14,7 +14,7 @@ class Dashboard::GroupsController < DashboardController
     @group.user_id = current_user.id
 
     if @group.save
-      redirect_to dashboard_groups_path, notice: "#{@group.name} cadastrado com sucesso!"
+      redirect_to dashboard_groups_path, notice: "#{@group.name} successfully registered!"
     else
       alert_errors
     end
@@ -24,7 +24,7 @@ class Dashboard::GroupsController < DashboardController
 
   def update
     if @group.update(groups_params)
-      redirect_to dashboard_groups_path, notice: "#{@group.name} atualizado com sucesso!"
+      redirect_to dashboard_groups_path, notice: "#{@group.name} updated successfully!"
     else
       alert_errors
     end
