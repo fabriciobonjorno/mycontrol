@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body class="app">
+  <body data-flash-messages="<%= JSON.dump(flash.to_a) %>" class="app">
     <header class="app-header fixed-top">
       <%= render 'dashboard/shared/header' %>
       <%= render 'dashboard/shared/sidepanel' %>
