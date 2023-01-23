@@ -20,9 +20,10 @@ class Account < ApplicationRecord
 
   # Public methods
   def convert_type
-    if account_type == 'checking'
+    case account_type
+    when 'checking'
       'Checking'
-    elsif account_type == 'saving'
+    when 'saving'
       'Saving'
     end
   end
