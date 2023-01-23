@@ -2,3 +2,23 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import './portal';
+
+.nav-tabs {
+  border-bottom: 1px solid #15a362;
+}
+
+.nav-link, .nav-link:hover, .nav-link:focus {
+  color: #15a362;
+}
+
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #15a362 #15a362 #15a362;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #15a362;
+  font-weight: bold;
+  background-color: #edfdf6;
+  border-color: #15a362 #15a362 #fff;
+}
