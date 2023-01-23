@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   namespace :dashboard do
     resources 'groups', expect: %i[destroy]
+    resources :users, only: %i[edit update]
   end
   root 'dashboard#index'
   devise_for :users

@@ -8,7 +8,7 @@
               <%= image_tag "logo.png", class: "logo-icon me-2 img-fluid rounded", alt: "logo" %>
             <% end %>
           </div>
-          <h2 class="auth-heading text-center mb-5">Log in to My Control</h2>
+          <h2 class="auth-heading text-center mb-5">Log in to <%= t ("default.site_title") %></h2>
           <div class="auth-form-container text-start">
             <%= form_for(resource, as: resource_name, html: { class: "auth-form login-form" }, url: session_path(resource_name)) do |f| %>
               <div class="email mb-3">

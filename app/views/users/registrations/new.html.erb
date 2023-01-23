@@ -8,7 +8,7 @@
               <%= image_tag "logo.png", class: "logo-icon me-2 img-fluid rounded", alt: "logo" %>
             <% end %>
           </div>
-          <h2 class="auth-heading text-center mb-4">Sign up to My Control</h2>
+          <h2 class="auth-heading text-center mb-4">Sign up to <%= t ("default.site_title") %></h2>
           <div class="auth-form-container text-start mx-auto">
             <%= form_for(resource, as: resource_name, html: { class: "auth-form auth-signup-form" }, url: registration_path(resource_name)) do |f| %>
               <%= render "users/shared/error_messages", resource: resource %>

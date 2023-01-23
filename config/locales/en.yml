@@ -40,10 +40,15 @@ en:
     title_description: Manage your finances and your daily tasks.
     subtitle_description: Easily manage your payment routines and daily tasks.
     acount_exists: Already have an account?
+    dash: Dashboard
+    site_title: My Control
+    settings: Settings
+    logout: Logout
   buttons_default:
     add: Add
     cancel: Cancel
   group:
+    group: Group
     title_group: Account Group
     name: Name Group
     status: Status
