@@ -2,12 +2,15 @@
 
 Rails.application.routes.draw do
   namespace :dashboard do
-    get 'accounts/index'
-  end
-  namespace :dashboard do
     resources 'groups', expect: %i[destroy]
     resources :users, only: %i[edit update]
     resources :accounts, except: %i[destroy show]
+    resources :financials, except: %i[destroy index] do
+      post :change_paid
+      collection do
+        get :list_transction
+      end
+    end
   end
   root 'dashboard#index'
   devise_for :users

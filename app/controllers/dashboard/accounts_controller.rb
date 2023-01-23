@@ -1,51 +1,56 @@
-class Dashboard::AccountsController < DashboardController
-  # before_action :set_resources, only: %i[index]
-  before_action :set_accounts, only: %i[edit update]
-  before_action :find_groups, only: %i[new edit]
+# frozen_string_literal: true
 
-  def index
-    @accounts = Account.where(group: current_user.groups).order(account: :asc)
-  end
+module Dashboard
+  class AccountsController < DashboardController
+    include MenuResources
+    before_action :set_resources, only: %i[index]
+    before_action :set_accounts, only: %i[edit update]
+    before_action :find_groups, only: %i[new edit]
 
-  def new
-    @account = Account.new
-  end
-
-  def create
-    @account = Account.new(accounts_params)
-    if @account.save
-      redirect_to dashboard_accounts_path, notice: 'Account successfully registered!'
-    else
-      alert_errors
+    def index
+      @accounts = Account.where(group: current_user.groups).order(account: :asc)
     end
-  end
 
-  def edit; end
-
-  def update
-    if @account.update(accounts_params)
-      redirect_to dashboard_accounts_path, notice: 'Account updated successfully!'
-    else
-      alert_errors
+    def new
+      @account = Account.new
     end
-  end
 
-  def find_groups
-    @groups = Group.where(user_id: current_user.id).where(status: 'active')
-  end
+    def create
+      @account = Account.new(accounts_params)
+      if @account.save
+        redirect_to dashboard_accounts_path, notice: 'Account successfully registered!'
+      else
+        alert_errors
+      end
+    end
 
-  private
+    def edit; end
 
-  def alert_errors
-    redirect_to dashboard_accounts_path, alert: @account.errors.full_messages.to_sentence
-  end
+    def update
+      if @account.update(accounts_params)
+        redirect_to dashboard_accounts_path, notice: 'Account updated successfully!'
+      else
+        alert_errors
+      end
+    end
 
-  def set_accounts
-    @account = Account.find(params[:id])
-  end
+    def find_groups
+      @groups = Group.where(user_id: current_user.id).where(status: 'active')
+    end
 
-  def accounts_params
-    params.require(:account).permit(:agency, :account, :balance, :status, :account_type, :bank_id,
-                                    :group_id)
+    private
+
+    def alert_errors
+      redirect_to dashboard_accounts_path, alert: @account.errors.full_messages.to_sentence
+    end
+
+    def set_accounts
+      @account = Account.find(params[:id])
+    end
+
+    def accounts_params
+      params.require(:account).permit(:agency, :account, :balance, :status, :account_type, :bank_id,
+                                      :group_id)
+    end
   end
 end

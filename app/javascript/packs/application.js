@@ -27,5 +27,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   })
 });
 
+require("@nathanvda/cocoon")
+
 Rails.start()
 ActiveStorage.start()

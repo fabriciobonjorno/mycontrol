@@ -5,7 +5,7 @@ class CreateFinancials < ActiveRecord::Migration[6.1]
     return if table_exists? 'financials'
 
     create_table :financials, id: :uuid do |t|
-      t.integer :transaction_type
+      t.integer :transaction_type, default: 0
       t.decimal :total_transaction, precision: 10, scale: 2
       t.references :account, null: false, foreign_key: true, type: :uuid
 

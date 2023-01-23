@@ -10,6 +10,7 @@ class Group < ApplicationRecord
   # Relationships
   belongs_to :user
   has_many :accounts, dependent: :destroy
+  has_many :financials, through: :accounts
 
   def active?
     status == 'active'

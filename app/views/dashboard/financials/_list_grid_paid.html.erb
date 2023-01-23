@@ -1,0 +1,28 @@
+      <div class="table-responsive">
+        <table id="groupTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"><%= t ("financial.account") %></th>
+              <th scope="col"><%= t ("financial.due_date") %></th>
+              <th scope="col"><%= t ("financial.payment_date") %></th>
+              <th scope="col"><%= t ("financial.installment") %></th>
+              <th scope="col"><%= t ("financial.transaction_type") %></th>
+              <th scope="col"><%= t ("financial.total_transaction") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @transaction.financials.each do |financial| %>
+              <% financial.installments.where(status: "paid").each do |installment| %>
+                <tr>
+                  <td><%= financial&.account&.agency_with_account %></td>
+                  <td><%= l installment&.due_date %></td>
+                  <td><%= l installment&.payment_date %></td>
+                  <td><%= translate_attr(Financial, financial&.transaction_type) %></td>
+                  <td><%= installment&.number %> / <%= financial&.installments.size %></td>
+                  <td><%= financial.decorate.transact_format(currency_br(installment&.payment_value)) %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>

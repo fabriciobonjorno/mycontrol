@@ -11,4 +11,8 @@ module ApplicationHelper
     svg['viewBox'] = options[:viewBox] if options[:viewBox].present?
     doc.to_html.html_safe
   end
+
+  def currency_br(value)
+    number_to_currency(value, unit: 'R$ ', separator: ',', delimiter: '.')
+  end
 end

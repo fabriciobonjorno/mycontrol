@@ -1,0 +1,25 @@
+<div class="modal fade" id="pay_<%= installment.id %>_Modal" tabindex="-1" aria-labelledby="pay_<%= installment.id %>_ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pay_<%= installment.id %>_ModalLabel"><%= t ("financial.modal_title") %> <%= installment.name %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: dashboard_financial_change_paid_path(installment.id), local: false, method: :post do %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= hidden_field_tag "status", "paid" %>
+            <%= label_tag :payment_date %>
+            <%= date_field_tag :payment_date, params[:payment_date], class: "form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t ("buttons_default.cancel") %></button>
+          <%= button_tag(type: "submit", class: 'btn app-btn-primary theme-btn my-1', data: { disable_with: 'Saving....⌛'}) do %>
+            <%= icon("check2-circle") %> <%= t ("buttons_default.confirm") %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

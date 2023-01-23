@@ -1,0 +1,31 @@
+<h1 class="app-page-title"><%= t ("financial.title_financial") %></h1>
+<hr class="mb-4">
+<div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
+    <%= link_to new_dashboard_financial_path(group: params[:group]), remote: true, class:"btn app-btn-primary theme-btn me-md-2", data: {bs_toggle:"modal", bs_target:"#modal"} do %>
+      <%= icon("plus-square") %> <%= t ("buttons_default.add") %>
+    <% end %>
+  </div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-paid-tab" data-bs-toggle="tab" data-bs-target="#nav-paid" type="button" role="tab" aria-controls="nav-paid" aria-selected="true"><%= t ("buttons_default.paid") %></button>
+      <button class="nav-link" id="nav-unpaid-tab" data-bs-toggle="tab" data-bs-target="#nav-unpaid" type="button" role="tab" aria-controls="nav-unpaid" aria-selected="false"><%= t ("buttons_default.unpaid") %></button>
+    </div>
+  </nav>
+  <div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+          <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-paid" role="tabpanel" aria-labelledby="nav-paid-tab">
+        <%= render 'list_grid_paid' %>
+        </div>
+        <div class="tab-pane fade" id="nav-unpaid" role="tabpanel" aria-labelledby="nav-unpaid-tab">
+        <%= render 'list_grid_unpaid' %>
+        </div>
+      </div>
+      <!--//table-responsive-->
+    </div>
+    <!--//app-card-body-->
+  </div>
+  <!--//app-card-->
+</div>
+<!--//tab-pane-->

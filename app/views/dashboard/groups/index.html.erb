@@ -2,8 +2,7 @@
 <hr class="mb-4">
 <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
   <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
-    <%= link_to new_dashboard_group_path, remote: true, class:"btn app-btn-primary theme-btn me-md-2", data: {bs_toggle:"modal", bs_target:"#modal", 
-                                                                                                                                        toggle:"tooltip", placement:"top"}, title:"Adicionar Grupo de contas" do %>
+    <%= link_to new_dashboard_group_path, remote: true, class:"btn app-btn-primary theme-btn me-md-2", data: {bs_toggle:"modal", bs_target:"#modal"} do %>
       <%= icon("plus-square") %> <%= t ("buttons_default.add") %>
     <% end %>
   </div>
@@ -26,8 +25,7 @@
                 <td class="cell"><%= group&.name %></td>
                 <td class="cell"><%= group&.active? ? '✅' : '❌' %></td>
                 <td class="cell">
-                  <%= link_to edit_dashboard_group_path(group), remote: true, class:"btn app-btn-primary theme-btn mx-auto", data: {bs_toggle:"modal", bs_target:"#modal", 
-                                                                                                                                        toggle:"tooltip", placement:"top"}, title:"Editar Grupo de contas" do %>
+                  <%= link_to edit_dashboard_group_path(group), remote: true, class:"btn app-btn-primary theme-btn mx-auto", data: {bs_toggle:"modal", bs_target:"#modal"} do %>
                     <%= icon("pencil-square") %>
                   <% end %>
                 </td>
