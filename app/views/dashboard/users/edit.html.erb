@@ -1,0 +1,118 @@
+<div class="offset-md-2">
+  <h1 class="app-page-title">My Account</h1>
+  <div class="row gy-4 mb-3">
+    <div class="col-12 col-lg-9">
+      <%= form_with model: [:dashboard, @user], multipart: true do |f| %>
+        <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+          <div class="app-card-header p-3 border-bottom-0">
+            <div class="row align-items-center gx-3">
+              <div class="col-auto">
+                <div class="app-icon-holder">
+                  <%= icon("person", class: "text-success", width:"1em", height:"1em", viewBox:"0 0 16 16") %>
+                </div>
+              </div>
+              <div class="col-auto">
+                <h4 class="app-card-title">Profile</h4>
+              </div>
+            </div>
+          </div>
+          <div class="app-card-body px-4 w-100">
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12 text-center">
+                  <div class="item-label mb-2"><strong>Photo</strong></div>
+                  <div class="item-data">
+                    <div class="form-group mb-4">
+                        <%= image_tag 'user.jpg', class:"profile-image img-fluid rounded", alt: "user profile" %>
+                    </div>
+                    <div class="form-group mb-4">
+                      <%#= f.file_field :photo_profile, class: "custom-file-input", id:"browse" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+                    <label for="user_first_name"><%= f.label :first_name %></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= f.text_field :last_name, class:"form-control" %>
+                    <label for="user_last_name"><%= f.label :last_name %></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= f.email_field :email, class:"form-control" %>
+                    <label for="user_email"><%= f.label :email %></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-card-footer p-4 mt-auto">
+            <%= f.submit "Update Profile", class: "btn app-btn-secondary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row gy-4">
+    <div class="col-12 col-lg-9">
+      <%= form_with model: [:dashboard, @user], multipart: true do |f| %>
+        <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+          <div class="app-card-header p-3 border-bottom-0">
+            <div class="row align-items-center gx-3">
+              <div class="col-auto">
+                <div class="app-icon-holder">
+                  <%= icon("shield-check", class: "text-success", width:"1em", height:"1em", viewBox:"0 0 16 16") %>
+                </div>
+              </div>
+              <div class="col-auto">
+                <h4 class="app-card-title">Security</h4>
+              </div>
+            </div>
+          </div>
+          <div class="app-card-body px-4 w-100">
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= f.password_field :password, class:"form-control", onfocus:"this.value=''", value: "********" %>
+                    <label for="user_password"><%= f.label :password %></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item border-bottom py-3">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12">
+                  <div class="form-floating">
+                    <%= f.password_field :password, class:"form-control", onfocus:"this.value=''", value: "********" %>
+                    <label for="user_password_confirmation"><%= f.label :password_confirmation %></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-card-footer p-4 mt-auto">
+            <%= f.submit "Update Password", class: "btn app-btn-secondary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
   namespace :dashboard do
+    get 'users/edit'
+  end
+  namespace :dashboard do
     resources 'groups', expect: %i[destroy]
     resources :users, only: %i[edit update]
     resources :accounts, except: %i[destroy show]
