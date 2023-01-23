@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mycontrol</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+  <body class="app">
+    <header class="app-header fixed-top">
+      <%= render 'dashboard/shared/header' %>
+      <%= render 'dashboard/shared/sidepanel' %>
+    </header>
+    <!--//app-header-->
+    <div class="app-wrapper">
+      <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+          <%= yield %>
+        </div>
+        <!--//container-fluid-->
+      </div>
+      <!--//app-content-->
+      <%= render 'dashboard/shared/footer' %>
+    </div>
+    <!--//app-wrapper-->
+    <%= javascript_pack_tag 'app' %>
+  </body>
+</html>
