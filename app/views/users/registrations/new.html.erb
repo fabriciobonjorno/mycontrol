@@ -23,12 +23,10 @@
               </div>
               <div class="mb-3">
                 <%= f.password_field :password, class: "form-control", placeholder: "#{t("default.password")} (#{@minimum_password_length} #{t("default.characters_minimum")})", required: true %>
-                <%= render "users/shared/password_validate" %>
                 <small class="fw-lighter">(including 1 uppercase letter, 1 number, 1 special character)</small>
               </div>
               <div class="mb-3">
                 <%= f.password_field :password_confirmation, class: "form-control", placeholder: "#{t("default.password_confirmation")}", required: true %>
-                <%= render "users/shared/password_validate" %>
               </div>
               <div class="actions">
                 <%= f.submit class: "btn app-btn-primary w-100 theme-btn mx-auto" %>
