@@ -66,6 +66,18 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'mycontrol.fly.dev' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailjet.com',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true,
+    domain: 'mycontrol.fly.dev',
+    user_name: Rails.application.credentials.dig(:mailjet, :api_key),
+    password: Rails.application.credentials.dig(:mailjet, :secret_key)
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

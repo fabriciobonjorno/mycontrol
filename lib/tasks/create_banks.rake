@@ -6,7 +6,7 @@ namespace :create_banks do
     logger = ActiveSupport::Logger.new("log/#{Time.current.strftime('%d%m%Y')}_import_banks.log")
     logger.info('m=ImportBanks status=initial imported_quantity=0')
 
-    response = Rails.env.production? ? HTTParty.get('https://my-controll.herokuapp.com/banks.json') : HTTParty.get('http://localhost:3000/banks.json')
+    response = Rails.env.production? ? HTTParty.get('https://mycontrol.fly.dev/banks.json') : HTTParty.get('http://localhost:3000/banks.json')
     banks = JSON.parse(response&.body || '{}')
 
     logger.info('m=BanksPersistence status=initial')

@@ -34,3 +34,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Fly.io Ignore
+fly.toml
+.dockerignore
+Dockerfile
+lib/tasks/fly.rake
