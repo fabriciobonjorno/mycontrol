@@ -3,8 +3,10 @@
   <div class="sidepanel-inner d-flex flex-column">
     <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
     <div class="app-branding text-center">
-      <a class="app-logo" href="index.html"><img class="logo-icon me-2" 
-					<%= image_tag "logo.png", alt: "logo"%>	<span class="logo-text"><%= t ("default.site_title") %></span></a>
+      <%= link_to root_path, class:"app-logo" do  %>
+        <img class="logo-icon me-2" 
+					<%= image_tag "logo.png", alt: "logo"%>	<span class="logo-text"><%= t ("default.site_title") %></span>
+    <% end %>
   </div>
   <!--//app-branding-->
   <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">

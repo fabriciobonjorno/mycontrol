@@ -1,7 +1,8 @@
 <%= form_with model: [:dashboard, @financial] do |f| %>
-<%= hidden_field_tag "group", params[:group] %>
+  <%= hidden_field_tag "group", params[:group] %>
   <div class="p-4">
     <div class="form-row justify-content-lg-center">
+      <%= hidden_field_tag :counter, 0 %>
       <div class="row">
         <div class="form-group col-md-6 col-lg-6">
           <% if Account.all.size > 0 %>
@@ -21,23 +22,23 @@
         <div class="form-group col-md-4 col-lg-4">
           <%= f.label :transaction_type %>
           <div class="form-check form-check-inline">
-          <%=  f.collection_radio_buttons :transaction_type, Financial.transaction_types.map{ |a| [a.first,a.first] }, :first, :second  do |b| %>
-            <div class="form-check form-check-inline">
-              <%= b.radio_button class: "form-check-input" %>
-              <%= b.label class: "form-check-label" %>
-            </div>
-          <% end %>
+            <%=  f.collection_radio_buttons :transaction_type, Financial.transaction_types.map{ |a| [a.first,a.first] }, :first, :second  do |b| %>
+              <div class="form-check form-check-inline">
+                <%= b.radio_button class: "form-check-input" %>
+                <%= b.label class: "form-check-label" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
       <hr>
-      <div class="row">
+      <div class="row" id="installments">
         <%= f.fields_for :installments do |t| %>
           <%= render "installment_fields", f: t %>
         <% end %>
-        <div class="mt-2 text-center">
+        <div class="mt-2 text-center" >
           <%= link_to_add_association "#{t ("buttons_default.add_transaction")}", f, :installments, class: "btn app-btn-primary w-50 theme-btn mx-auto" %>
-        </div>        
+        </div>
       </div>
     </div>
   </div>
@@ -47,4 +48,18 @@
     </div>
   </div>
 <% end %>
-
+<script>
+  $(document).ready(function() {
+      $('#installments')
+        .on('cocoon:before-insert', function(e, add) {
+          number = parseInt($('#counter').val()) + 1
+          add.find("input[id*='number']").val(number);
+          $('#counter').val(number);
+        })
+        .on("cocoon:before-remove", function(e, add) {
+          number = parseInt($('#counter').val()) - 1
+          add.find("input[id*='number']").val(number);
+          $('#counter').val(number);
+      })
+      });
+</script>
