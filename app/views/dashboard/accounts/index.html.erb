@@ -9,22 +9,20 @@
   <div class="app-card app-card-orders-table shadow-sm mb-5">
     <div class="app-card-body">
       <div class="table-responsive">
-        <table class="table app-table-hover mb-0 text-left">
+        <table class="table app-table-hover mb-0 text-center">
           <thead>
-            <tr class="text-center">
-              <th style="width:25%" class="cell"><%= t ("account.id") %></th>
-              <th style="width:15%" class="cell"><%= t ("account.agency") %></th>
-              <th style="width:15%" class="cell"><%= t ("account.account") %></th>
-              <th style="width:15%" class="cell"><%= t ("account.balance") %></th>
-              <th style="width:10%" class="cell"><%= t ("account.account_type") %></th>
-              <th style="width:10%" class="cell"><%= t ("account.status") %></th>
-              <th style="width:10%" class="cell"><%= t ("account.action") %></th>
+            <tr>
+              <th class="cell"><%= t ("account.agency") %></th>
+              <th class="cell"><%= t ("account.account") %></th>
+              <th class="cell"><%= t ("account.balance") %></th>
+              <th class="cell"><%= t ("account.account_type") %></th>
+              <th class="cell"><%= t ("account.status") %></th>
+              <th class="cell"><%= t ("account.action") %></th>
             </tr>
           </thead>
           <tbody>
             <% @accounts.each do |account| %>
-              <tr class="text-center">
-                <td class="cell"><%= account&.id %></td>
+              <tr>
                 <td class="cell"><%= account&.agency %></td>
                 <td class="cell"><%= account&.account %></td>
                 <td class="cell"><%= account&.balance %></td>

@@ -3,7 +3,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="pay_<%= installment.id %>_ModalLabel"><%= t ("financial.modal_title") %> <%= installment.name %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= form_with url: dashboard_financial_change_paid_path(installment.id), local: false, method: :post do %>
         <div class="modal-body">

@@ -3,6 +3,7 @@
 class Financial < ApplicationRecord
   # Validates
   validates :transaction_type, :installments, presence: true
+  before_save :set_total
 
   # Enumerates
   enum transaction_type: %i[credit debit]
@@ -15,4 +16,12 @@ class Financial < ApplicationRecord
                                                             l[:name].blank? ||
                                                               l[:payment_value].blank?
                                                           }, allow_destroy: true
+
+  def total
+    installments.collect { |installment| installment.payment_value }.sum
+  end
+
+  def set_total
+    self[:total_transaction] = total
+  end
 end

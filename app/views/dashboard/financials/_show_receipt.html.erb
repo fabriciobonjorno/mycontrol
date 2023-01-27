@@ -1,0 +1,40 @@
+<div class="modal fade" id="show_<%= financial.id %>_Modal" tabindex="-1" aria-labelledby="show_<%= financial.id %>_ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="show_<%= financial.id %>_ModalLabel"><%= t ("financial.receipt_list") %></h5>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table id="showTable" class="table table-hover text-center">
+            <thead>
+              <tr>
+                <th scope="col"><%= t ("financial.due_date") %></th>
+                <th scope="col"><%= t ("financial.payment_date") %></th>
+                <th scope="col"><%= t ("financial.installment") %></th>
+                <th scope="col"><%= t ("financial.transaction_type") %></th>
+                <th scope="col"><%= t ("financial.status") %></th>
+                <th scope="col"><%= t ("financial.total_transaction") %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%  financial.installments.each do |installment| %>
+                <tr>
+                  <td><%= l installment&.due_date %></td>
+                  <td><%= l installment&.payment_date if installment&.payment_date.present? %></td>
+                  <td><%= translate_attr(Financial, financial&.transaction_type) %></td>
+                  <td><%= installment&.number %> / <%= financial&.installments.size %></td>
+                  <td><%= installment.decorate.status_format(installment&.status) %></td>
+                  <td><%= financial.decorate.transact_format(currency_br(installment&.payment_value)) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t ("buttons_default.cancel") %></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,22 +9,20 @@
   <div class="app-card app-card-orders-table shadow-sm mb-5">
     <div class="app-card-body">
       <div class="table-responsive">
-        <table class="table app-table-hover mb-0 text-left">
+        <table class="table app-table-hover mb-0 text-center">
           <thead>
-            <tr class="text-center">
-              <th style="width:30%" class="cell"><%= t ("bank.id") %></th>
-              <th style="width:30%" class="cell"><%= t ("bank.name") %></th>
-              <th style="width:30%" class="cell"><%= t ("bank.number") %></th>
-              <th style="width:20%" class="cell"><%= t ("bank.status") %></th>
-              <th style="width:20%" class="cell"><%= t ("bank.action") %></th>
+            <tr>
+              <th class="cell"><%= t ("bank.name") %></th>
+              <th class="cell"><%= t ("bank.number") %></th>
+              <th class="cell"><%= t ("bank.status") %></th>
+              <th class="cell"><%= t ("bank.action") %></th>
             </tr>
           </thead>
           <tbody>
             <% @banks.each do |bank| %>
-              <tr class="text-center">
-                <td class="cell"><%= bank&.id %></td>
-                <td class="cell"><%= bank&.number %></td>
+              <tr>
                 <td class="cell"><%= bank&.name %></td>
+                <td class="cell"><%= bank&.number %></td>
                 <td class="cell"><%= bank&.active? ? '✅' : '❌' %></td>
                 <td class="cell">
                   <%= link_to edit_dashboard_bank_path(bank), remote: true, class:"btn app-btn-primary theme-btn mx-auto", data: {bs_toggle:"modal", bs_target:"#modal"} do %>

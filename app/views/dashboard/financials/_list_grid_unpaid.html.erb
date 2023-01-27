@@ -1,6 +1,5 @@
-      
 <div class="table-responsive">
-  <table id="groupTable" class="table table-hover">
+  <table id="unpaidTable" class="table table-hover text-center">
     <thead>
       <tr>
         <th scope="col"><%= t ("financial.account") %></th>
@@ -21,10 +20,14 @@
             <td><%= installment&.number %> / <%= financial&.installments.size %></td>
             <td><%= currency_br(installment&.payment_value) %></td>
             <td>
-            <button type="button" class="btn app-btn-primary" data-bs-toggle="modal" data-bs-target="#pay_<%= installment.id %>_Modal">
-              <%= icon("currency-dollar") %> <%= t ("buttons_default.pay") %>
-            </button>
-            <%= render 'pay_modal', installment: installment  %>
+              <button type="button" class="btn app-btn-primary" data-bs-toggle="modal" data-bs-target="#pay_<%= installment.id %>_Modal">
+                <%= icon("currency-dollar") %> <%= t ("buttons_default.pay") %>
+              </button>
+              <%= render 'pay_modal', installment: installment  %>
+              <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#show_<%= financial.id %>_Modal">
+                <%= icon("eye") %> <%= t ("buttons_default.show") %>
+              </button>
+              <%= render 'show_receipt', financial: financial  %>
             </td>
           </tr>
         <% end %>
@@ -32,4 +35,3 @@
     </tbody>
   </table>
 </div>
-

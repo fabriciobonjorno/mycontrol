@@ -12,7 +12,7 @@
         </div>
         <div class="form-group col-md-2 col-lg-4">
           <%= f.label :payment_value %>
-          <%= f.number_field :payment_value, step: 0.01, class: "form-control" %>
+          <%= f.number_field :payment_value, step: 0.01, class: "form-control pay_value" %>
         </div>
       </div>
       <hr>
@@ -25,7 +25,7 @@
           <%= f.label :payment_date %>
           <%= f.date_field :payment_date, class: "form-control" %>
         </div>
-                <div class="form-group col-md-4 col-lg-4">
+        <div class="form-group col-md-4 col-lg-4">
           <%= f.label :status %>
           <div class="form-check form-check-inline">
             <%=  f.collection_radio_buttons :status, Installment.statuses.map{ |a| [a.first,a.first] }, :first, :second  do |b| %>
@@ -49,3 +49,33 @@
     <%= link_to_remove_association "#{t ("buttons_default.remove_transaction")}", f, class: "btn app-btn-danger w-25 theme-btn mx-auto" %>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+
+         //iterate through each textboxes and add keyup
+         //handler to trigger sum event
+    $(".pay_value").each(function() {
+
+             $(this).keyup(function(){
+                 calculateSum();
+             });
+         });
+
+     });
+
+     function calculateSum() {
+
+         var sum = 0;
+         //iterate through each textboxes and add the values
+         $(".pay_value").each(function() {
+
+             //add only if the value is number
+             if(!isNaN(this.value) && this.value.length!=0) {
+                 sum += parseFloat(this.value);
+             }
+
+         });
+         //.toFixed() method will roundoff the final sum to 2 decimal places
+         $("#sum").html(sum.toFixed(2));
+     }
+</script>

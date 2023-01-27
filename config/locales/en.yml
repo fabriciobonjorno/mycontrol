@@ -25,6 +25,7 @@ en:
         account: Account
         due_date: Due date
         payment_date: Payday
+        receipt_list: Receipts List
         account_id: Account
         transaction_type: Transaction Type
         action: Action
@@ -49,6 +50,7 @@ en:
     paid: Paid
     confirm: Confirm
     pay: Pay
+    show: Show
   bank:
     bank: Banks
     title_bank: Banks

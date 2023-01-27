@@ -9,19 +9,17 @@
   <div class="app-card app-card-orders-table shadow-sm mb-5">
     <div class="app-card-body">
       <div class="table-responsive">
-        <table class="table app-table-hover mb-0 text-left">
+        <table class="table app-table-hover mb-0 text-center">
           <thead>
-            <tr class="text-center">
-              <th style="width:30%" class="cell"><%= t ("group.id") %></th>
-              <th style="width:30%" class="cell"><%= t ("group.name") %></th>
-              <th style="width:20%" class="cell"><%= t ("group.status") %></th>
-              <th style="width:20%" class="cell"><%= t ("group.action") %></th>
+            <tr>
+              <th class="cell"><%= t ("group.name") %></th>
+              <th class="cell"><%= t ("group.status") %></th>
+              <th class="cell"><%= t ("group.action") %></th>
             </tr>
           </thead>
           <tbody>
             <% @groups.each do |group| %>
-              <tr class="text-center">
-                <td class="cell"><%= group&.id %></td>
+              <tr>
                 <td class="cell"><%= group&.name %></td>
                 <td class="cell"><%= group&.active? ? '✅' : '❌' %></td>
                 <td class="cell">
