@@ -48,13 +48,21 @@ en:
     paid: Paid
     confirm: Confirm
     pay: Pay
+  bank:
+    group: Group
+    title_bank: Banks
+    name: Name of Bank
+    number: Number of Bank
+    status: Status
+    action: Action
+    id: Protocol Number
   group:
     group: Group
     title_group: Account Groups
-    name: Name Group
+    name: Name of Group
     status: Status
     action: Action
-    id: Number Group
+    id: Protocol Number
   account:
     account: Account
     agency: Agency
@@ -63,7 +71,7 @@ en:
     title_account: Accounts
     status: Status
     action: Action
-    id: Number Account
+    id: Protocol Number
     transactions: Transactions
   financial:
     title_financial: Financial Transactions
