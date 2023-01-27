@@ -18,7 +18,7 @@ class Financial < ApplicationRecord
                                                           }, allow_destroy: true
 
   def total
-    installments.collect { |installment| installment.payment_value }.sum
+    installments.collect(&:payment_value).sum
   end
 
   def set_total
