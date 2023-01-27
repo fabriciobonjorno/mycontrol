@@ -51,31 +51,57 @@
 </div>
 <script>
   $(document).ready(function(){
+  	$(".pay_value").each(
+  		function(){
+  		$(this).keyup(
+  			function(){
+  			calculateSum()
+  				});
+  			});
+  		});
 
-         //iterate through each textboxes and add keyup
-         //handler to trigger sum event
-    $(".pay_value").each(function() {
+  		function calculateSum(){
+  			var sum=0;
+  			$(".pay_value").each(
+  			function(){
+                  var vl = this.value.replace(',','');
+  				if(!isNaN(vl) && vl.length!=0){
+  					sum+=parseFloat(vl);
+  					}
+  				});
 
-             $(this).keyup(function(){
-                 calculateSum();
-             });
-         });
+  			$("#sum").val(sum.toFixed(2));
+  			}
 
-     });
+  $(document).ready(function(){
+    $('input.pay_value').keyup(function(event){
+        // skip for arrow keys
+        if(event.which >= 37 && event.which <= 40){
+            event.preventDefault();
+        }
+        var $this = $(this);
+        var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
 
-     function calculateSum() {
+        var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
 
-         var sum = 0;
-         //iterate through each textboxes and add the values
-         $(".pay_value").each(function() {
+        console.log(num2);
 
-             //add only if the value is number
-             if(!isNaN(this.value) && this.value.length!=0) {
-                 sum += parseFloat(this.value);
-             }
 
-         });
-         //.toFixed() method will roundoff the final sum to 2 decimal places
-         $("#sum").html(sum.toFixed(2));
-     }
+        // the following line has been simplified. Revision history contains original.
+        $this.val(num2);
+    });
+  });
+
+  function RemoveRougeChar(convertString){
+
+
+      if(convertString.substring(0,1) == ","){
+
+          return convertString.substring(1, convertString.length)
+
+      }
+      return convertString;
+
+  }
 </script>
+
