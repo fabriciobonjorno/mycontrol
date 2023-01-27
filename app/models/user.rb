@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validate :password_regex
 
   # Relationship
+  has_many :banks, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :accounts, through: :groups
 

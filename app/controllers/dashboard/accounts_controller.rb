@@ -35,7 +35,7 @@ module Dashboard
     end
 
     def find_groups
-      @groups = Group.where(user_id: current_user.id).where(status: 'active')
+      @groups = current_user.groups.where(status: 'active').order(name: :asc)
     end
 
     private

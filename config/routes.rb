@@ -2,10 +2,14 @@
 
 Rails.application.routes.draw do
   namespace :dashboard do
+    get 'banks/index'
+  end
+  namespace :dashboard do
     get 'users/edit'
   end
   namespace :dashboard do
-    resources 'groups', expect: %i[destroy]
+    resources :banks, expect: %i[destroy]
+    resources :groups, expect: %i[destroy]
     resources :users, only: %i[edit update]
     resources :accounts, except: %i[destroy show]
     resources :financials, except: %i[destroy index] do

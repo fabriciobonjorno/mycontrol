@@ -1,0 +1,44 @@
+<h1 class="app-page-title"><%= t ("group.title_group") %></h1>
+<hr class="mb-4">
+<div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
+    <%= link_to new_dashboard_bank_path, remote: true, class:"btn app-btn-primary theme-btn me-md-2", data: {bs_toggle:"modal", bs_target:"#modal"} do %>
+      <%= icon("plus-square") %> <%= t ("buttons_default.add") %>
+    <% end %>
+  </div>
+  <div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+      <div class="table-responsive">
+        <table class="table app-table-hover mb-0 text-left">
+          <thead>
+            <tr class="text-center">
+              <th style="width:30%" class="cell"><%#= t ("group.id") %></th>
+              <th style="width:30%" class="cell"><%#= t ("group.name") %></th>
+              <th style="width:20%" class="cell"><%#= t ("group.status") %></th>
+              <th style="width:20%" class="cell"><%#= t ("group.action") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @banks.each do |bank| %>
+              <tr class="text-center">
+                <td class="cell"><%= bank&.id %></td>
+                <td class="cell"><%= bank&.number %></td>
+                <td class="cell"><%= bank&.name %></td>
+                <td class="cell"><%= bank&.active? ? '✅' : '❌' %></td>
+                <td class="cell">
+                  <%= link_to edit_dashboard_bank_path(bank), remote: true, class:"btn app-btn-primary theme-btn mx-auto", data: {bs_toggle:"modal", bs_target:"#modal"} do %>
+                    <%= icon("pencil-square") %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!--//table-responsive-->
+    </div>
+    <!--//app-card-body-->
+  </div>
+  <!--//app-card-->
+</div>
+<!--//tab-pane-->

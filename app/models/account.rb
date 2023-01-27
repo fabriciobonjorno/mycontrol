@@ -2,7 +2,8 @@ class Account < ApplicationRecord
   # Validates
   validates :agency, :account, :balance, :account_type, :status, presence: true
   validate :valid_balance, on: :update
-  validate :account_number_type, on: :create
+  validate :account_number_type, on: %i[update create]
+
 
   # enums
   enum account_type: %i[checking saving]
@@ -36,11 +37,11 @@ class Account < ApplicationRecord
   private
 
   def valid_balance
-    errors.add(:balance, 'não pode ser alterado, para atualizar o saldo faça um lançamento!.') if balance_changed?
+    errors.add(:balance, ' cannot be changed, to update the balance make a launch!.') if balance_changed?
   end
 
   def account_number_type
     number_type = Account.where(account: account, account_type: account_type)
-    errors.add(:account, "já cadastrada para #{convert_type}") if number_type.exists?
+    errors.add(:account, " already registered for #{convert_type}") if number_type.exists?
   end
 end

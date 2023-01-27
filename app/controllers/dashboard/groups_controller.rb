@@ -2,7 +2,7 @@ class Dashboard::GroupsController < DashboardController
   before_action :set_groups, only: %i[edit update]
 
   def index
-    @groups = Group.where(user_id: current_user.id).order(name: :asc)
+    @groups = current_user.groups.order(name: :asc)
   end
 
   def new

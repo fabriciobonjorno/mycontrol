@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_22_232847) do
+ActiveRecord::Schema.define(version: 2023_01_26_211815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -40,8 +40,11 @@ ActiveRecord::Schema.define(version: 2023_01_22_232847) do
     t.string "number", limit: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "user_id", null: false
+    t.integer "status"
     t.index ["name"], name: "index_banks_on_name"
     t.index ["number"], name: "index_banks_on_number"
+    t.index ["user_id"], name: "index_banks_on_user_id"
   end
 
   create_table "financials", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 2023_01_22_232847) do
 
   add_foreign_key "accounts", "banks"
   add_foreign_key "accounts", "groups"
+  add_foreign_key "banks", "users"
   add_foreign_key "financials", "accounts"
   add_foreign_key "groups", "users"
   add_foreign_key "installments", "financials"
