@@ -6,6 +6,7 @@ module Dashboard
     before_action :set_resources, only: %i[index]
     before_action :set_accounts, only: %i[edit update]
     before_action :find_groups, only: %i[new edit]
+    before_action :find_banks, only: %i[new edit]
 
     def index
       @accounts = Account.where(group: current_user.groups).order(account: :asc)
@@ -36,6 +37,10 @@ module Dashboard
 
     def find_groups
       @groups = current_user.groups.where(status: 'active').order(name: :asc)
+    end
+
+    def find_banks
+      @banks = current_user.banks.where(status: 'active').order(name: :asc)
     end
 
     private
