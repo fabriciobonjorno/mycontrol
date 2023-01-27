@@ -49,7 +49,7 @@ en:
     confirm: Confirm
     pay: Pay
   bank:
-    group: Group
+    bank: Banks
     title_bank: Banks
     name: Name of Bank
     number: Number of Bank
@@ -57,14 +57,14 @@ en:
     action: Action
     id: Protocol Number
   group:
-    group: Group
+    group: Groups
     title_group: Account Groups
     name: Name of Group
     status: Status
     action: Action
     id: Protocol Number
   account:
-    account: Account
+    account: Accounts
     agency: Agency
     balance: Balance
     account_type: Account Type
