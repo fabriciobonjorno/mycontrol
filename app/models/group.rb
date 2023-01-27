@@ -3,7 +3,7 @@
 class Group < ApplicationRecord
   # Validates
   validates :name, :status, presence: true
-  validates :name, uniqueness: { scope: :user }
+  validates :name, uniqueness: { scope: :user, case_sensitive: false }
 
   # Enumerates
   enum status: %i[active inactive]

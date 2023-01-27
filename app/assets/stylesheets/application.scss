@@ -22,3 +22,27 @@
   background-color: #edfdf6;
   border-color: #15a362 #15a362 #fff;
 }
+
+[type="file"] {
+  /* Style the color of the message that says 'No file chosen' */
+  color: #15a362;
+}
+
+[type="file"]::-webkit-file-upload-button {
+  background    : #15a362;
+  border        : 2px solid #15a362;
+  border-radius : 4px;
+  color         : #fff;
+  cursor        : pointer;
+  font-size     : 12px;
+  outline       : none;
+  padding       : 10px 25px;
+  text-transform: uppercase;
+  transition    : all 1s ease;
+}
+
+[type="file"]::-webkit-file-upload-button:hover {
+  background: #15a362;
+  border    : 2px solid #535353;
+  color     : #fff;
+}

@@ -23,10 +23,14 @@
                   <div class="item-label mb-2"><strong>Photo</strong></div>
                   <div class="item-data">
                     <div class="form-group mb-4">
+                      <% if @user&.photo_profile&.attached? %>
+                        <%= image_tag @user&.photo_profile, class:"profile-image img-fluid rounded", alt: "user profile" %>
+                      <% else %>
                         <%= image_tag 'user.jpg', class:"profile-image img-fluid rounded", alt: "user profile" %>
+                      <% end %>
                     </div>
                     <div class="form-group mb-4">
-                      <%#= f.file_field :photo_profile, class: "custom-file-input", id:"browse" %>
+                      <%= f.file_field :photo_profile, class: "custom-file-input", id:"browse" %>
                     </div>
                   </div>
                 </div>

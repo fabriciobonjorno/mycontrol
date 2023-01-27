@@ -18,10 +18,17 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
   has_many :accounts, through: :groups
 
+  # Profile photo
+  has_one_attached :photo_profile
+
   # Capitalize Name
   def capitalize_names
     self.first_name = first_name&.split(/ |_/)&.map(&:capitalize)&.join(' ') unless first_name.blank?
     self.last_name = last_name&.split(/ |_/)&.map(&:capitalize)&.join(' ') unless last_name.blank?
+  end
+
+  def full_name
+    "#{first_name} #{last_name} "
   end
 
   # Validate password

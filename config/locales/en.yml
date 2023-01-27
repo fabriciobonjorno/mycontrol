@@ -1,5 +1,6 @@
 en:
   default:
+    welcome: Welcome
     characters_minimum: Minimum characters
     first_name: First Name
     last_name: Last Name

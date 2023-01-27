@@ -3,7 +3,7 @@
 class Bank < ApplicationRecord
   # Validates
   validates :name, :number, presence: true
-  validates :name, :number, uniqueness: { scope: :user }
+  validates :name, :number, uniqueness: { case_sensitive: false, scope: :user }
 
   # Enumerates
   enum status: %i[active inactive]
