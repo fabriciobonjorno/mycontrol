@@ -58,6 +58,8 @@ GEM
       activesupport (= 6.1.7.1)
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
+    activestorage-validator (0.2.2)
+      rails (>= 6.0.4.1)
     activesupport (6.1.7.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -315,6 +317,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activestorage-validator
   bootsnap (>= 1.4.4)
   byebug
   cocoon
@@ -327,6 +330,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mailcatcher
+  mini_magick
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

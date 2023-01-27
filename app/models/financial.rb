@@ -11,5 +11,8 @@ class Financial < ApplicationRecord
   belongs_to :account
   has_one :group, through: :account
   has_many :installments, dependent: :destroy
-  accepts_nested_attributes_for :installments, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :installments, reject_if: proc { |l|
+                                                            l[:name].blank? ||
+                                                              l[:payment_value].blank?
+                                                          }, allow_destroy: true
 end

@@ -4,7 +4,6 @@ class Account < ApplicationRecord
   validate :valid_balance, on: :update
   validate :account_number_type, on: %i[update create]
 
-
   # enums
   enum account_type: %i[checking saving]
   enum status: %i[active inactive]

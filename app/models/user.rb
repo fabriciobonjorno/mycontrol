@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   # Profile photo
   has_one_attached :photo_profile
+  validates :photo_profile, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
 
   # Capitalize Name
   def capitalize_names
