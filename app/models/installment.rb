@@ -14,6 +14,9 @@ class Installment < ApplicationRecord
 
   # Relationships
   belongs_to :financial
+  has_one :account, through: :financial
+  has_one :group, through: :account
+  has_one :user, through: :group
 
   # Private methods
   private

@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :banks, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :accounts, through: :groups
+  has_many :financials, through: :accounts
+  has_many :installments, through: :financials
+
+  # Scopes
 
   # Profile photo
   has_one_attached :photo_profile
