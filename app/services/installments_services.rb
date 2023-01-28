@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InstallmentService
+class InstallmentsServices
   def initialize(installment)
     @installment = installment
   end

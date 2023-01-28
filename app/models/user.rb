@@ -24,8 +24,7 @@ class User < ApplicationRecord
 
   # Capitalize Name
   def capitalize_names
-    self.first_name = first_name&.split(/ |_/)&.map(&:capitalize)&.join(' ') unless first_name.blank?
-    self.last_name = last_name&.split(/ |_/)&.map(&:capitalize)&.join(' ') unless last_name.blank?
+    UsersServices.new(self).call
   end
 
   def full_name

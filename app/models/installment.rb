@@ -19,6 +19,6 @@ class Installment < ApplicationRecord
   private
 
   def set_balance
-    InstallmentService.new(self).call
+    InstallmentsServices.new(self).call
   end
 end
