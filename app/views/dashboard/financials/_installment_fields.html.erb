@@ -50,58 +50,47 @@
   </div>
 </div>
 <script>
-  $(document).ready(function(){
-  	$(".pay_value").each(
-  		function(){
-  		$(this).keyup(
-  			function(){
-  			calculateSum()
-  				});
-  			});
-  		});
 
-  		function calculateSum(){
-  			var sum=0;
-  			$(".pay_value").each(
-  			function(){
-                  var vl = this.value.replace(',','');
-  				if(!isNaN(vl) && vl.length!=0){
-  					sum+=parseFloat(vl);
-  					}
-  				});
+$(document).ready(function () {
 
-  			$("#sum").val(sum.toFixed(2));
-  			}
+  setInterval(function () { calculateSum() }, 500);
+  input_value();
+  calculateSum();
 
-  $(document).ready(function(){
-    $('input.pay_value').keyup(function(event){
-        // skip for arrow keys
-        if(event.which >= 37 && event.which <= 40){
-            event.preventDefault();
-        }
-        var $this = $(this);
-        var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
+});
 
-        var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
-
-        console.log(num2);
-
-
-        // the following line has been simplified. Revision history contains original.
-        $this.val(num2);
-    });
-  });
-
-  function RemoveRougeChar(convertString){
-
-
-      if(convertString.substring(0,1) == ","){
-
-          return convertString.substring(1, convertString.length)
-
+function calculateSum() {
+  var sum = 0;
+  $(".pay_value").each(
+    function () {
+      var vl = this.value.replace(',', '');
+      if (!isNaN(vl) && vl.length != 0) {
+        sum += parseFloat(vl);
       }
-      return convertString;
+    });
 
+  $("#sum").val(sum.toFixed(2));
+}
+
+function input_value() {
+    $('input.pay_value').keyup(function (event) {
+    if (event.which >= 37 && event.which <= 40) {
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
+    var num2 = RemoveRougeChar(num.replace(/(.{3})/g, "$1,").split("").reverse().join(""));
+    console.log(num2);
+    $this.val(num2);
+  });
+}
+
+function RemoveRougeChar(convertString) {
+  if (convertString.substring(0, 1) == ",") {
+    return convertString.substring(1, convertString.length)
   }
+  return convertString;
+}
+
 </script>
 
