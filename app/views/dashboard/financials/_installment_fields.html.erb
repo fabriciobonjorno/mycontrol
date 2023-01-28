@@ -46,62 +46,94 @@
     </div>
   </div>
   <div class="px-4 mb-4 text-center">
-    <%= link_to_remove_association "#{t ("buttons_default.remove_transaction")}", f, class: "btn app-btn-danger w-25 theme-btn mx-auto" %>
+    <%= link_to_remove_association "#{t ("buttons_default.remove_transaction")}", f, class: "btn app-btn-danger w-25 theme-btn mx-auto", onclick: "calculateSub();" %>
   </div>
 </div>
 <script>
-  $(document).ready(function(){
-  	$(".pay_value").each(
-  		function(){
-  		$(this).keyup(
-  			function(){
-  			calculateSum()
-  				});
-  			});
-  		});
 
-  		function calculateSum(){
-  			var sum=0;
-  			$(".pay_value").each(
-  			function(){
-                  var vl = this.value.replace(',','');
-  				if(!isNaN(vl) && vl.length!=0){
-  					sum+=parseFloat(vl);
-  					}
-  				});
-
-  			$("#sum").val(sum.toFixed(2));
-  			}
-
-  $(document).ready(function(){
-    $('input.pay_value').keyup(function(event){
-        // skip for arrow keys
-        if(event.which >= 37 && event.which <= 40){
-            event.preventDefault();
-        }
-        var $this = $(this);
-        var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
-
-        var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
-
-        console.log(num2);
-
-
-        // the following line has been simplified. Revision history contains original.
-        $this.val(num2);
+$(document).ready(function () {
+  $(".pay_value").each(
+    function () {
+      $(this).keyup(
+        function () {
+          calculateSum()
+        });
     });
+  $('input.pay_value').keyup(function (event) {
+    // skip for arrow keys
+    if (event.which >= 37 && event.which <= 40) {
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
+    var num2 = RemoveRougeChar(num.replace(/(.{3})/g, "$1,").split("").reverse().join(""));
+    console.log(num2);
+
+    $this.val(num2);
   });
+   $(".pay_value").each(
+    function () {
+      //debugger
+      console.log("Pay", this.value);
+    });
+});
 
-  function RemoveRougeChar(convertString){
-
-
-      if(convertString.substring(0,1) == ","){
-
-          return convertString.substring(1, convertString.length)
-
+function calculateSum() {
+  var sum = 0;
+  var sub = $(".pay_value").val();
+  $(".pay_value").each(
+    function () {
+      var vl = this.value.replace(',', '');
+      if (!isNaN(vl) && vl.length != 0) {
+        sum += parseFloat(vl);
       }
-      return convertString;
+    });
+  $("#sum").val(sum.toFixed(2));
+}
 
+function checkSum() {
+  var matches = [];
+var inputs = document.getElementsByTagName('input');
+for (var i = 0; i < inputs.length; ++i) {
+  var value = inputs[i].value;
+  if(value === $('#sum').val()) {
+        matches.push(value);
+  }else{
+    $('#sum').val('')
+}
+ console.log(matches);
+}
+}
+
+function calculateSub() {
+  checkSum();
+  var sum = parseFloat($("#sum").val());
+  var sub = parseFloat($(".pay_value").val());
+  var total = 0
+  $(".pay_value").each(
+    function () {
+      if (sub > 0) {        
+        var vl = this.value.replace(',', '');
+              
+        if (!isNaN(vl) && vl.length != 0) {
+          sub += parseFloat(vl);
+          total = sum - sub;
+          if (total < 0) {
+            total = Math.abs(total);
+          }
+        } 
+      }
+    });
+
+  $("#sum").val(total.toFixed(2));
+ 
+}
+
+function RemoveRougeChar(convertString) {
+  if (convertString.substring(0, 1) == ",") {
+    return convertString.substring(1, convertString.length)
   }
+  return convertString;
+}
 </script>
 
