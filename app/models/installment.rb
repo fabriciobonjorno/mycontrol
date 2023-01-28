@@ -15,21 +15,10 @@ class Installment < ApplicationRecord
   # Relationships
   belongs_to :financial
 
-  # Public methods
-  def update_balance
-    if status == 'paid' && financial.transaction_type == 'credit'
-      balance = financial.account.balance + payment_value
-    elsif status == 'paid' && financial.transaction_type == 'debit'
-      balance = financial.account.balance - payment_value
-    end
-    balance
-  end
-
   # Private methods
   private
 
   def set_balance
-    account = financial.account
-    account.update_columns(balance: update_balance) unless update_balance.nil?
+    InstallmentService.new(self).call
   end
 end
