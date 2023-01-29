@@ -85,21 +85,22 @@ bundle exec rspec
 
 ### Scopes
 
-We have 4 base scopes: 
-- **/dashboard/banks** 
-  ![list](https://user-images.githubusercontent.com/28460996/158917476-4143ecc7-647c-4f6f-80ef-4fdcc92b6291.png)  
+We have 5 base scopes: 
+
+- **/dashboard**
+![dash](https://user-images.githubusercontent.com/28460996/215345210-d6684027-41c7-4184-9051-cfe91942df30.png)
+
+- **/dashboard/banks**
+![banks](https://user-images.githubusercontent.com/28460996/215345219-382dd98f-cbbd-49b9-92df-0d38eea88241.png)
 
 - **/dashboard/groups**
-  ![import](https://user-images.githubusercontent.com/28460996/158917290-0dc74834-d671-4744-9287-1c755556aa08.png)
+![groups](https://user-images.githubusercontent.com/28460996/215345264-ddc83a2a-77bc-4f21-b60e-fe61e84104e1.png)
 
 - **/dashboard/accounts**
-  ![import](https://user-images.githubusercontent.com/28460996/158917290-0dc74834-d671-4744-9287-1c755556aa08.png)
+![accounts](https://user-images.githubusercontent.com/28460996/215345279-541cc08b-805d-4b87-a334-e7f9998e9f63.png)
 
 - **/dashboard/financials/list_transction**
-  ![import](https://user-images.githubusercontent.com/28460996/158917290-0dc74834-d671-4744-9287-1c755556aa08.png)
-  
-<hr>
-Below is a demo of the system working. 
-exemple:
-- **/catalogs?release_year=2020&genre=movie&country=united** 
-  ![filter](https://user-images.githubusercontent.com/28460996/158925007-8731d537-d7e4-4a2b-92e8-1582776795fb.png)
+![transactions](https://user-images.githubusercontent.com/28460996/215345292-ad0ca648-38fe-4c3e-a18c-ab06fed84c20.png)
+   
+Exemple sending email:
+![email](https://user-images.githubusercontent.com/28460996/215345424-0cc6df69-385c-4c77-9cfc-a88b8a1f99f9.png)
