@@ -20,7 +20,7 @@ Ok, so first you must have:
 
 2. Ruby >= 3.0.5 installed.
 
-3. As we're on the beginning of project, don't forget to right configure your `datatabe.yml`. In the project there are 2 database examples, one for use with Docker and one without Docker.
+3. As we're on the beginning of project, don't forget to right configure your `datatabe.yml`.
 
 As soon as you have everything done you can follow
 
