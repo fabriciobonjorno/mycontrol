@@ -79,3 +79,5 @@ en:
   financial:
     title_financial: Financial Transactions
     modal_title: Make Payment
+  send_invoices:
+    title: Send Invoices
