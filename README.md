@@ -44,39 +44,6 @@ rails db:create
 rails db:migrate
 ```
 
-### 2. Building everything with docker
-
-If you want to use Docker to create your development and data environment, you can follow the path below.
-
-#### Necessary documentation:
-- [Docker](https://docs.docker.com/engine/install/ubuntu/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-
-1. Building the project
-```
-docker-compose build
-```
-
-2. Start the application
-```
-docker-compose up
-```
-
-3. Create database
-```
-docker-compose run web rails db:create
-```
-
-4. Run migrations
-```
-docker-compose run web rails db:migrate
-```
-
-If you want to run tests: 
-```
-bundle exec rspec
-```
-
 ## How can I use this system?
 
 1. Register the bank that has the account.
