@@ -79,7 +79,7 @@ function input_value() {
     }
     var $this = $(this);
     var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
-    var num2 = RemoveRougeChar(num.replace(/(.{3})/g, "$1,").split("").reverse().join(""));
+    var num2 = RemoveRougeChar(num.replace(/(.{9})/g, "$1,").split("").reverse().join(""));
     console.log(num2);
     $this.val(num2);
   });

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :send_notifications do
   desc 'Send notification of due invoices'
   task due_invoices: :environment do
