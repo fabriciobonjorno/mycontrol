@@ -8,10 +8,6 @@ This is a simple project that aims to control your expenses by separating them i
 - ruby 3.0.5
 - Postgres
 
-## How to use it?
-
-Basically we have two endpoints, one for import and another where we list movies and series.
-
 ## Building application
 
 Ok, so first you must have:
