@@ -25,6 +25,6 @@ module ApplicationHelper
   end
 
   def url_show_group(group)
-    url_default + group_url + "#{group}"
+    url_default + group_url + group.to_s
   end
 end

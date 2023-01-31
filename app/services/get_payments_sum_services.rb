@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GetPaymentsSumServices
   def initialize(user_id, transaction_type, installment_status)
     @user_id = user_id
