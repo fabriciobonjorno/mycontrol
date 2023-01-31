@@ -15,4 +15,16 @@ module ApplicationHelper
   def currency_br(value)
     number_to_currency(value, unit: 'R$ ', separator: ',', delimiter: '.')
   end
+
+  def url_default
+    Rails.env.production? ? 'https://mycontrol.fly.dev/' : 'http://localhost:3000/'
+  end
+
+  def group_url
+    'dashboard/financials/list_transction?group='
+  end
+
+  def url_show_group(group)
+    url_default + group_url + "#{group}"
+  end
 end
