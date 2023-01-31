@@ -23,4 +23,8 @@ every 1.month, at: 'start of the month at 2am' do
   rake 'create_banks: create'
 end
 
+every 1.day, at: '1:00 am' do
+  rake 'send_notifications: due_invoices'
+end
+
 # Learn more: http://github.com/javan/whenever
